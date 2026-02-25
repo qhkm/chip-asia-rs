@@ -1,6 +1,6 @@
 [package]
 name = "chip-sdk"
-version = "0.1.0"
+version = "0.2.0"
 edition = "2021"
 license = "Unlicense"
 description = "Rust SDK for CHIP payment gateway API (chip-in.asia)"
