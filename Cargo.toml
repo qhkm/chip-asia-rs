@@ -18,6 +18,7 @@ thiserror = "2"
 rsa = { version = "0.9", features = ["sha2"] }
 sha2 = "0.10"
 base64 = "0.22"
+clap = { version = "4", features = ["derive", "env"] }
 
 [dev-dependencies]
 mockito = "1"
