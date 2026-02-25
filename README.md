@@ -57,6 +57,75 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
 }
 ```
 
+## CLI Usage
+
+Install the CLI:
+
+```bash
+cargo install chip-sdk
+```
+
+### Authentication
+
+Set your API token as an environment variable:
+
+```bash
+export CHIP_API_TOKEN=your-api-token
+```
+
+Or pass it as a flag: `--token your-api-token`
+
+### Commands
+
+```bash
+# List payment methods
+chip payment-methods --brand-id BRAND_ID --currency MYR
+
+# Create a purchase
+chip create-purchase \
+  --brand-id BRAND_ID \
+  --email buyer@example.com \
+  --product-name "Widget" \
+  --product-price 100
+
+# Get purchase status
+chip get-purchase PURCHASE_ID
+
+# Cancel / capture / refund / release
+chip cancel-purchase PURCHASE_ID
+chip capture-purchase PURCHASE_ID --amount 5000
+chip refund-purchase PURCHASE_ID --amount 1000
+chip release-purchase PURCHASE_ID
+
+# Charge with recurring token
+chip charge-purchase PURCHASE_ID --recurring-token TOKEN
+
+# Delete recurring token
+chip delete-token PURCHASE_ID
+
+# Verify webhook signature
+chip verify-signature \
+  --content '{"id":"..."}' \
+  --signature "base64-signature" \
+  --public-key-file public.pem
+```
+
+### Machine-Readable Output
+
+Use `--json` for compact single-line JSON output (ideal for AI agents):
+
+```bash
+chip get-purchase abc-123 --json
+```
+
+### Advanced: Create Purchase from JSON
+
+Pipe a full Purchase JSON via stdin:
+
+```bash
+echo '{"brand_id":"...","client":{"email":"..."},...}' | chip create-purchase --stdin
+```
+
 ## API Methods
 
 All methods are async and return `Result<T, ChipError>`.
