@@ -4,7 +4,10 @@ version = "0.1.0"
 edition = "2021"
 license = "Unlicense"
 description = "Rust SDK for CHIP payment gateway API (chip-in.asia)"
-repository = "https://github.com/CHIPAsia/chip-rust-sdk"
+repository = "https://github.com/qhkm/chip-asia-rs"
+readme = "README.md"
+keywords = ["chip", "payment", "gateway", "malaysia", "fintech"]
+categories = ["api-bindings"]
 
 [dependencies]
 reqwest = { version = "0.12", features = ["json"] }
