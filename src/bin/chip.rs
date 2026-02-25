@@ -1,5 +1,5 @@
-use clap::Parser;
 use chip_sdk::{ChipClient, ChipError};
+use clap::Parser;
 
 #[derive(Parser)]
 #[command(name = "chip", version, about = "CHIP payment gateway CLI")]

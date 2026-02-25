@@ -1,5 +1,6 @@
 use assert_cmd::Command;
 
+#[allow(deprecated)]
 #[test]
 fn cli_shows_help() {
     Command::cargo_bin("chip")
@@ -10,6 +11,7 @@ fn cli_shows_help() {
         .stdout(predicates::str::contains("CHIP payment gateway CLI"));
 }
 
+#[allow(deprecated)]
 #[test]
 fn cli_shows_version() {
     Command::cargo_bin("chip")
@@ -19,6 +21,7 @@ fn cli_shows_version() {
         .success();
 }
 
+#[allow(deprecated)]
 #[test]
 fn cli_errors_without_token() {
     Command::cargo_bin("chip")
@@ -30,14 +33,13 @@ fn cli_errors_without_token() {
         .stderr(predicates::str::contains("token"));
 }
 
+#[allow(deprecated)]
 #[test]
 fn cli_errors_without_subcommand() {
-    Command::cargo_bin("chip")
-        .unwrap()
-        .assert()
-        .failure();
+    Command::cargo_bin("chip").unwrap().assert().failure();
 }
 
+#[allow(deprecated)]
 #[test]
 fn cli_create_purchase_requires_flags() {
     Command::cargo_bin("chip")
@@ -49,14 +51,17 @@ fn cli_create_purchase_requires_flags() {
         .stderr(predicates::str::contains("--brand-id"));
 }
 
+#[allow(deprecated)]
 #[test]
 fn cli_verify_signature_requires_content_source() {
     Command::cargo_bin("chip")
         .unwrap()
         .args([
             "verify-signature",
-            "--signature", "dGVzdA==",
-            "--public-key-file", "nonexistent.pem",
+            "--signature",
+            "dGVzdA==",
+            "--public-key-file",
+            "nonexistent.pem",
         ])
         .assert()
         .failure();
